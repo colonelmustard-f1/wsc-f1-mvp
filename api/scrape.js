@@ -4,7 +4,7 @@ import cheerio from 'cheerio';
 export default async function handler(req, res) {
   try {
     const { raceId, location } = req.query;
-    const url = `https://www.formula1.com/en/results/2024/races/${raceId}/${location}/race-result.html`;
+    const url = `https://www.formula1.com/en/results/2024/races/${raceId}/${location}/race-result`;
     
     const response = await fetch(url);
     if (!response.ok) {
