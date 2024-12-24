@@ -18,6 +18,7 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log('Attempting to scrape:', url);
     const response = await fetch(url);
     const html = await response.text();
     const $ = cheerio.load(html);
