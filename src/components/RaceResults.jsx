@@ -11,6 +11,7 @@ function RaceResults() {
     setLoading(true);
     setError(null);
     try {
+      console.log('Fetching from:', `/api/scrape?url=${encodeURIComponent(testUrl)}`);
       const response = await fetch(`/api/scrape?url=${encodeURIComponent(testUrl)}`);
       const data = await response.json();
       setResults(data.results);
