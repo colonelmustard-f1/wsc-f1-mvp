@@ -7,7 +7,16 @@ export default async function handler(req, res) {
     const url = `https://www.formula1.com/en/results/2024/races/${raceId}/${location}/race-result.html`;
     
     const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const html = await response.text();
+    console.log('HTML Response:', html.substring(0, 500)); // Log first 500 chars
+    
+    if (!html) {
+      throw new Error('Empty HTML response');
+    }
+    
     const $ = cheerio.load(html);
     
     const results = [];
